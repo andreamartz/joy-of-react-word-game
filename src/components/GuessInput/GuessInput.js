@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
 
-const GuessInput = () => {
-  const [guess, setGuess] = useState('');
+const GuessInput = ({updateGuesses}) => {
+  const [currentGuess, setCurrentGuess] = useState('');
 
   const handleChange = (event) => {
-    const nextGuess = event.target.value.toUpperCase();
-    console.log({ nextGuess });
-    setGuess(nextGuess);
+    const nextCurrentGuess = event.target.value.toUpperCase();
+    setCurrentGuess(nextCurrentGuess);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmitGuess = (event) => {
     event.preventDefault();
-    console.log({ guess });
-    setGuess('');
+    console.log({ currentGuess });
+
+    updateGuesses(currentGuess);
+    setCurrentGuess('');
   };
 
   return (
-    <form className="guess-input-wrapper" onSubmit={handleSubmit}>
+    <form className="guess-input-wrapper" onSubmit={handleSubmitGuess}>
       <label htmlFor="guess-input">Enter guess:</label>
       <input id="guess-input" 
         type="text"
         required={true}
         onChange={handleChange} 
-        value={guess}
+        value={currentGuess}
         minLength={5}
         maxLength={5}
         title="5 letter word"
