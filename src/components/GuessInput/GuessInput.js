@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const GuessInput = ({updateGuesses}) => {
+const GuessInput = ({ updateGuesses }) => {
   const [currentGuess, setCurrentGuess] = useState('');
 
   const handleChange = (event) => {
