@@ -2,14 +2,17 @@ import React from 'react';
 import { range } from '../../utils';
 import { NUM_OF_LETTERS_PER_WORD } from '../../constants';
 
-function Guess({ guessValue }) {
+function Guess({ guessValue, guessData }) {
+  console.log({guessValue}, {guessData});
   return (
     <p className="guess">
-      {range(NUM_OF_LETTERS_PER_WORD).map((num) => ( 
-        <span key={num} className="cell">
-          {guessValue ? guessValue.split('')[num] : null}
-        </span>
-      ))}
+      {range(NUM_OF_LETTERS_PER_WORD).map((num) => {
+        return (
+          <span key={num} className={guessValue ? `cell ${guessData[num].status}` : "cell"}>
+            {guessValue ? guessValue.split('')[num] : null}
+          </span>
+        );
+      })}
     </p>
   ); 
 }

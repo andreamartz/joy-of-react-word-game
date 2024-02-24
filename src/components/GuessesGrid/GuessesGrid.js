@@ -10,7 +10,8 @@ function GuessesGrid({guesses}) {
         return (
           <Guess 
             key={guesses[num] ? guesses[num].id : num} 
-            guessValue={guesses[num] ? guesses[num].guess : null} 
+            guessValue={guesses[num] ? guesses[num].guess : null}
+            guessData={guesses[num] && guesses[num].guessData}
           />
         );
       })}

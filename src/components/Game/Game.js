@@ -4,7 +4,8 @@ import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import GuessInput from '../GuessInput/GuessInput';
 import GuessesGrid from '../GuessesGrid/GuessesGrid';
-import {NUM_OF_GUESSES_ALLOWED} from '../../constants';
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { checkGuess } from '../../game-helpers';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -19,8 +20,11 @@ function Game() {
       alert("Sorry, the maximum number of guesses has been reached.");
       return;
     }
+    
+    const guessData = checkGuess(currentGuess, answer);
     const currentGuessData = {
-      guess: currentGuess, 
+      guess: currentGuess,
+      guessData,
       id: `${currentGuess}-${crypto.randomUUID()}`
     }
 
