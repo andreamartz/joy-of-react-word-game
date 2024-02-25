@@ -4,6 +4,9 @@ import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import GuessInput from '../GuessInput/GuessInput';
 import GuessesGrid from '../GuessesGrid/GuessesGrid';
+import WonBanner from '../WonBanner/WonBanner';
+import LostBanner from '../LostBanner/LostBanner';
+
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import { checkGuess } from '../../game-helpers';
 
@@ -43,7 +46,8 @@ function Game() {
       ? "win"
       : guesses.length >= NUM_OF_GUESSES_ALLOWED
         ? "lose"
-        : "playing";
+        : "playing"
+    ;
     setPlayerStatus(nextPlayerStatus);
   }
 
@@ -53,10 +57,9 @@ function Game() {
       <GuessInput 
         updateGame={updateGame}
         gameOver={gameOver}
-        playerStatus={playerStatus}
-        numGuesses={guesses.length}
-        answer={answer}
       />
+      {playerStatus === "win" && <WonBanner numGuesses={guesses.length}></WonBanner>}
+      {playerStatus === "lose" && <LostBanner answer={answer}></LostBanner>}
     </>
   );
 }
