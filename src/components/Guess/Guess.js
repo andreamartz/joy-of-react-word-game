@@ -3,7 +3,6 @@ import { range } from '../../utils';
 import { NUM_OF_LETTERS_PER_WORD } from '../../constants';
 
 function Guess({ guessValue, guessData }) {
-  console.log({guessValue}, {guessData});
   return (
     <p className="guess">
       {range(NUM_OF_LETTERS_PER_WORD).map((num) => {

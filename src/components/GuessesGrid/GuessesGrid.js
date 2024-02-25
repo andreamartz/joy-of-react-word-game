@@ -12,6 +12,7 @@ function GuessesGrid({guesses}) {
             key={guesses[num] ? guesses[num].id : num} 
             guessValue={guesses[num] ? guesses[num].guess : null}
             guessData={guesses[num] && guesses[num].guessData}
+            isCorrect={guesses[num] ? guesses[num].isCorrect : null}
           />
         );
       })}
